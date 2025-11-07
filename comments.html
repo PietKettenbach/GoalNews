@@ -198,8 +198,6 @@
             commentInput.value = "";
         };
 
-        let longPressTimer;
-
         async function renderComments(snapshot) {
             commentsContainer.innerHTML = "";
             const user = auth.currentUser;
@@ -209,7 +207,6 @@
                 const commentDiv = document.createElement("div");
                 commentDiv.className = "comment";
 
-                // Username holen
                 let username = "Unbekannt";
                 try {
                     const userDoc = await getDoc(doc(db, "users", data.userId));
@@ -252,7 +249,8 @@
                 }
                 commentDiv.appendChild(reactionBar);
 
-                // Rechtsklick / langer Druck
+                // Rechtsklick / Doppeltippen für Reaktionen
+                let lastTap = 0;
                 const showReactions = (e) => {
                     e.preventDefault();
                     document.querySelectorAll(".reaction-popup").forEach(el => el.remove());
@@ -280,11 +278,16 @@
                 };
 
                 commentDiv.addEventListener("contextmenu", showReactions);
-                commentDiv.addEventListener("touchstart", (e) => {
-                    longPressTimer = setTimeout(() => showReactions(e.touches[0]), 600);
+
+                // Doppelklick für Handy/Touch
+                commentDiv.addEventListener("touchend", (e) => {
+                    const currentTime = new Date().getTime();
+                    const tapLength = currentTime - lastTap;
+                    if (tapLength < 300 && tapLength > 0) {
+                        showReactions(e.changedTouches[0]);
+                    }
+                    lastTap = currentTime;
                 });
-                commentDiv.addEventListener("touchend", () => clearTimeout(longPressTimer));
-                commentDiv.addEventListener("touchmove", () => clearTimeout(longPressTimer));
 
                 commentsContainer.appendChild(commentDiv);
             }
