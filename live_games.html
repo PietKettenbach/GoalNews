@@ -43,6 +43,38 @@ footer { margin-top:30px; padding:15px; background:#111; color:#eee; }
     font-size: 0.9rem;
     color: #1db954;
 }
+
+/* VAR Kommentar direkt unter Score – cooler Hightech-Look */
+.var-comment {
+    display: block;
+    margin-top: 5px;
+    background: linear-gradient(135deg, #FFD700, #FFEA70);
+    color: #000;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    animation: varCool 1.5s ease forwards, varGlow 2s ease-in-out infinite alternate;
+    text-align: center;
+}
+
+/* Slide-in + Pop + Bounce */
+@keyframes varCool {
+    0%   { opacity: 0; transform: translateY(20px) scale(0.8); }
+    50%  { opacity: 1; transform: translateY(-5px) scale(1.1); }
+    70%  { transform: translateY(0px) scale(1); }
+    100% { opacity: 1; transform: translateY(0px) scale(1); }
+}
+
+/* Pulsierender Glow / Hightech-Look */
+@keyframes varGlow {
+    0%   { box-shadow: 0 0 5px rgba(255, 223, 0, 0.6); }
+    50%  { box-shadow: 0 0 15px rgba(255, 255, 200, 0.9); }
+    100% { box-shadow: 0 0 5px rgba(255, 223, 0, 0.6); }
+}
+
 </style>
 </head>
 <body>
@@ -78,8 +110,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const tableBody = document.getElementById("tableBody");
-
-// Map für Spiel-Uhren
 const matchTimers = new Map();
 
 function addHalfTimeAnimation(tdElement) {
@@ -104,7 +134,6 @@ function formatTime(ms) {
 }
 
 function startMatchTimer(id, td, startTime, halfTime) {
-    // Wenn bereits läuft → abbrechen
     if (matchTimers.has(id)) clearInterval(matchTimers.get(id));
 
     let paused = halfTime;
@@ -130,6 +159,19 @@ function startMatchTimer(id, td, startTime, halfTime) {
     matchTimers.set(id, interval);
 }
 
+function showVARComment(td, comment) {
+    let varDiv = td.querySelector('.var-comment');
+    if (!varDiv) {
+        varDiv = document.createElement("span");
+        varDiv.className = "var-comment";
+        td.appendChild(varDiv);
+    }
+    varDiv.textContent = comment;
+    varDiv.style.opacity = 1;
+    // nach 5 Sekunden ausblenden
+    setTimeout(() => { varDiv.style.opacity = 0; }, 5000);
+}
+
 async function initLiveGames() {
     const colRef = collection(db, "liveGames");
 
@@ -151,6 +193,7 @@ async function initLiveGames() {
             const over = data.over || false;
             const halfTime = data.halfTime || false;
             const startTime = data.startTime ? data.startTime.toDate().getTime() : null;
+            const varComment = data.varComment || "";
             const homeCards = data.homeCards || {};
             const awayCards = data.awayCards || {};
 
@@ -170,16 +213,12 @@ async function initLiveGames() {
 
             const scoreTd = tr.querySelector("td:nth-child(3)");
 
-            if (halfTime) {
-                addHalfTimeAnimation(scoreTd);
-            } else {
-                removeHalfTimeAnimation(scoreTd);
-            }
+            if (halfTime) addHalfTimeAnimation(scoreTd);
+            else removeHalfTimeAnimation(scoreTd);
 
-            // Falls startTime existiert → Uhr starten
-            if (startTime) {
-                startMatchTimer(doc.id, scoreTd, startTime, halfTime);
-            }
+            if (startTime) startMatchTimer(doc.id, scoreTd, startTime, halfTime);
+
+            if (varComment) showVARComment(scoreTd, varComment);
         });
     });
 }
