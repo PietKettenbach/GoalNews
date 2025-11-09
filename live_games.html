@@ -130,7 +130,7 @@ function formatTime(ms) {
     const totalSeconds = Math.floor(ms / 1000);
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
-    return `Spiel Startet in: ${minutes} Minuten und${seconds.toString().padStart(2, "0")} Sekunden`;
+    return ` ${minutes}${seconds.toString().padStart(2, "0")}`;
 }
 
 function startMatchTimer(id, td, startTime, halfTime) {
@@ -227,3 +227,4 @@ initLiveGames();
 </script>
 </body>
 </html>
+
