@@ -1,241 +1,329 @@
 <!DOCTYPE html>
 <html lang="de">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GoalNews - NFL Spieltag 10</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
 
-        body {
-            background-color: #0f0f0f;
-            color: #eee;
-            line-height: 1.6;
-            overflow-x: hidden;
-            text-align: center;
-        }
+      body {
+        background-color: #0f0f0f;
+        color: #eee;
+        line-height: 1.6;
+        overflow-x: hidden;
+        text-align: center;
+      }
 
-        a {
-            color: #1db954;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+      a {
+        color: #1db954;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
 
-        a:hover {
-            color: #14a34a;
-        }
+      a:hover {
+        color: #14a34a;
+      }
 
-        header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px 0;
-            background: linear-gradient(90deg, #1db954, #14a34a);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-        }
+      header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+        background: linear-gradient(90deg, #1db954, #14a34a);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      }
 
-        header .logo {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: 2px;
-        }
+      header .logo {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: 2px;
+      }
 
+      main {
+        padding: 20px;
+        max-width: 950px;
+        margin: auto;
+        text-align: center;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background: #111;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #2a2a2a;
+      }
+
+      th {
+        background: #1db954;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background: #1a1a1a;
+      }
+
+      tr:hover {
+        background: #222;
+      }
+
+      .match-date {
+        color: #1db954;
+        font-weight: 600;
+      }
+
+      footer {
+        text-align: center;
+        padding: 25px;
+        background: #111;
+        font-size: 0.9rem;
+        color: #aaa;
+        margin-top: 40px;
+      }
+
+      @media (max-width: 768px) {
+        table,
+        th,
+        td {
+          font-size: 0.9rem;
+        }
         main {
-            padding: 20px;
-            max-width: 950px;
-            margin: auto;
-            text-align: center;
+          width: 95%;
         }
+      }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background: #111;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-left: auto;
-            margin-right: auto;
+      @media (max-width: 480px) {
+        table,
+        th,
+        td {
+          font-size: 0.85rem;
         }
-
-        th, td {
-            padding: 12px;
-            text-align: center;
-            border-bottom: 1px solid #2a2a2a;
-        }
-
-        th {
-            background: #1db954;
-            color: white;
-        }
-
-        tr:nth-child(even) {
-            background: #1a1a1a;
-        }
-
-        tr:hover {
-            background: #222;
-        }
-
-        .match-date {
-            color: #1db954;
-            font-weight: 600;
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            background: #111;
-            font-size: 0.9rem;
-            color: #aaa;
-            margin-top: 40px;
-        }
-
-        @media(max-width:768px) {
-            table, th, td {
-                font-size: 0.9rem;
-            }
-            main {
-                width: 95%;
-            }
-        }
-
-        @media(max-width:480px) {
-            table, th, td {
-                font-size: 0.85rem;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <div class="logo">GoalNews - NFL Spieltag 10</div>
+      <div class="logo">GoalNews - NFL Spieltag 10</div>
     </header>
     <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>Datum</th>
-                    <th>Uhrzeit (MEZ)</th>
-                    <th>Spiel</th>
-                    <th>Ergebnis</th>
-                    <th>Link</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="match-date">07.11.2025</td>
-                    <td>02:15</td>
-                    <td>Las Vegas Raiders @ Denver Broncos</td>
-                    <td>10 : 7</td>
-                    <td><a href="https://www.nfl.com/games/raiders-at-broncos-2025-reg-10?tab=overview" target="_blank">Recap</a></td>
-                </tr>
-                <tr>
-                    <td class="match-date">09.11.2025</td>
-                    <td>15:30</td>
-                    <td>Atlanta Falcons @ Indianapolis Colts</td>
-                    <td>- : -</td>
-                    <td><a href="https://www.nfl.com/games/falcons-at-colts-2025-reg-10?tab=overview" target="_blank">Recap</a></td>
-                </tr>
-                <tr>
-                    <td class="match-date">09.11.2025</td>
-                    <td>19:00</td>
-                    <td>New Orleans Saints @ Carolina Panthers</td>
-                    <td>- : -</td>
-                    <td><a href="https://www.nfl.com/games/saints-at-panthers-2025-reg-10?tab=overview" target="_blank">Recap</a></td>
-                </tr>
-                <tr>
-                    <td class="match-date">09.11.2025</td>
-                    <td>19:00</td>
-                    <td>New York Giants @ Chicago Bears</td>
-                    <td>- : -</td>
-                    <td><a href="https://www.nfl.com/games/giants-at-bears-2025-reg-10?tab=overview" target="_blank">Recap</a></td>
-                </tr>
-                <tr>
-                    <td class="match-date">09.11.2025</td>
-                    <td>19:00</td>
-                    <td>Jacksonville Jaguars @ Houston Texans</td>
-                    <td>- : -</td>
-                    <td><a href="https://www.nfl.com/games/jaguars-at-texans-2025-reg-10?tab=overview" target="_blank">Recap</a></td>
-                </tr>
-                <tr>
-                    <td class="match-date">09.11.2025</td>
-                    <td>19:00</td>
-                    <td>Buffalo Bills @ Miami Dolphins</td>
-                    <td>- : -</td>
-                    <td><a href="https://www.nfl.com/games/bills-at-dolphins-2025-reg-10?tab=overview" target="_blank">Recap</a></td>
-                </tr>
-                <tr>
-                    <td class="match-date">09.11.2025</td>
-                    <td>19:00</td>
-                    <td>Baltimore Ravens @ Minnesota Vikings</td>
-                    <td>- : -</td>
-                    <td><a href="https://www.nfl.com/games/ravens-at-vikings-2025-reg-10?tab=overview" target="_blank">Recap</a></td>
-                </tr>
-                <tr>
-                    <td class="match-date">09.11.2025</td>
-                    <td>19:00</td>
-                    <td>Cleveland Browns @ New York Jets</td>
-                    <td>- : -</td>
-                    <td><a href="https://www.nfl.com/games/browns-at-jets-2025-reg-10?tab=overview" target="_blank">Recap</a></td>
-                </tr>
-                <tr>
-                    <td class="match-date">09.11.2025</td>
-                    <td>19:00</td>
-                    <td>New England Patriots @ Tampa Bay Buccaneers</td>
-                    <td>- : -</td>
-                    <td><a href="https://www.nfl.com/games/patriots-at-buccaneers-2025-reg-10?tab=overview" target="_blank">Recap</a></td>
-                </tr>
-                <tr>
-                    <td class="match-date">09.11.2025</td>
-                    <td>22:05</td>
-                    <td>Arizona Cardinals @ Seattle Seahawks</td>
-                    <td>- : -</td>
-                    <td><a href="https://www.nfl.com/games/cardinals-at-seahawks-2025-reg-10?tab=overview" target="_blank">Recap</a></td>
-                </tr>
-                <tr>
-                    <td class="match-date">09.11.2025</td>
-                    <td>22:25</td>
-                    <td>Los Angeles Rams @ San Francisco 49ers</td>
-                    <td>- : -</td>
-                    <td><a href="https://www.nfl.com/games/rams-at-49ers-2025-reg-10?tab=overview" target="_blank">Recap</a></td>
-                </tr>
-                <tr>
-                    <td class="match-date">09.11.2025</td>
-                    <td>22:25</td>
-                    <td>Detroit Lions @ Washington Commanders</td>
-                    <td>- : -</td>
-                    <td><a href="https://www.nfl.com/games/lions-at-commanders-2025-reg-10?tab=overview" target="_blank">Recap</a></td>
-                </tr>
-                <tr>
-                    <td class="match-date">10.11.2025</td>
-                    <td>02:20</td>
-                    <td>Pittsburgh Steelers @ Los Angeles Chargers</td>
-                    <td>- : -</td>
-                    <td><a href="https://www.nfl.com/games/steelers-at-chargers-2025-reg-10?tab=overview" target="_blank">Recap</a></td>
-                </tr>
-                <tr>
-                    <td class="match-date">11.11.2025</td>
-                    <td>02:15</td>
-                    <td>Philadelphia Eagles @ Green Bay Packers</td>
-                    <td>- : -</td>
-                    <td><a href="https://www.nfl.com/games/eagles-at-packers-2025-reg-10?tab=overview" target="_blank">Recap</a></td>
-                </tr>
-            </tbody>
-        </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Datum</th>
+            <th>Uhrzeit (MEZ)</th>
+            <th>Spiel</th>
+            <th>Ergebnis</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="match-date">07.11.2025</td>
+            <td>02:15</td>
+            <td>Las Vegas Raiders @ Denver Broncos</td>
+            <td>10:7</td>
+            <td>
+              <a
+                href="https://www.nfl.com/games/raiders-at-broncos-2025-reg-10?tab=overview"
+                target="_blank"
+                >Recap</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td class="match-date">09.11.2025</td>
+            <td>15:30</td>
+            <td>Atlanta Falcons @ Indianapolis Colts</td>
+            <td>25:31</td>
+            <td>
+              <a
+                href="https://www.nfl.com/games/falcons-at-colts-2025-reg-10?tab=overview"
+                target="_blank"
+                >Recap</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td class="match-date">09.11.2025</td>
+            <td>19:00</td>
+            <td>New Orleans Saints @ Carolina Panthers</td>
+            <td>17:7:</td>
+            <td>
+              <a
+                href="https://www.nfl.com/games/saints-at-panthers-2025-reg-10?tab=overview"
+                target="_blank"
+                >Recap</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td class="match-date">09.11.2025</td>
+            <td>19:00</td>
+            <td>New York Giants @ Chicago Bears</td>
+            <td>20:24</td>
+            <td>
+              <a
+                href="https://www.nfl.com/games/giants-at-bears-2025-reg-10?tab=overview"
+                target="_blank"
+                >Recap</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td class="match-date">09.11.2025</td>
+            <td>19:00</td>
+            <td>Jacksonville Jaguars @ Houston Texans</td>
+            <td>29:36</td>
+            <td>
+              <a
+                href="https://www.nfl.com/games/jaguars-at-texans-2025-reg-10?tab=overview"
+                target="_blank"
+                >Recap</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td class="match-date">09.11.2025</td>
+            <td>19:00</td>
+            <td>Buffalo Bills @ Miami Dolphins</td>
+            <td>13:30</td>
+            <td>
+              <a
+                href="https://www.nfl.com/games/bills-at-dolphins-2025-reg-10?tab=overview"
+                target="_blank"
+                >Recap</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td class="match-date">09.11.2025</td>
+            <td>19:00</td>
+            <td>Baltimore Ravens @ Minnesota Vikings</td>
+            <td>27:19</td>
+            <td>
+              <a
+                href="https://www.nfl.com/games/ravens-at-vikings-2025-reg-10?tab=overview"
+                target="_blank"
+                >Recap</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td class="match-date">09.11.2025</td>
+            <td>19:00</td>
+            <td>Cleveland Browns @ New York Jets</td>
+            <td>20:27</td>
+            <td>
+              <a
+                href="https://www.nfl.com/games/browns-at-jets-2025-reg-10?tab=overview"
+                target="_blank"
+                >Recap</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td class="match-date">09.11.2025</td>
+            <td>19:00</td>
+            <td>New England Patriots @ Tampa Bay Buccaneers</td>
+            <td>28:23</td>
+            <td>
+              <a
+                href="https://www.nfl.com/games/patriots-at-buccaneers-2025-reg-10?tab=overview"
+                target="_blank"
+                >Recap</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td class="match-date">09.11.2025</td>
+            <td>22:05</td>
+            <td>Arizona Cardinals @ Seattle Seahawks</td>
+            <td>22:44</td>
+            <td>
+              <a
+                href="https://www.nfl.com/games/cardinals-at-seahawks-2025-reg-10?tab=overview"
+                target="_blank"
+                >Recap</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td class="match-date">09.11.2025</td>
+            <td>22:25</td>
+            <td>Los Angeles Rams @ San Francisco 49ers</td>
+            <td>42:26</td>
+            <td>
+              <a
+                href="https://www.nfl.com/games/rams-at-49ers-2025-reg-10?tab=overview"
+                target="_blank"
+                >Recap</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td class="match-date">09.11.2025</td>
+            <td>22:25</td>
+            <td>Detroit Lions @ Washington Commanders</td>
+            <td>44:22</td>
+            <td>
+              <a
+                href="https://www.nfl.com/games/lions-at-commanders-2025-reg-10?tab=overview"
+                target="_blank"
+                >Recap</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td class="match-date">10.11.2025</td>
+            <td>02:20</td>
+            <td>Pittsburgh Steelers @ Los Angeles Chargers</td>
+            <td>10:25</td>
+            <td>
+              <a
+                href="https://www.nfl.com/games/steelers-at-chargers-2025-reg-10?tab=overview"
+                target="_blank"
+                >Recap</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td class="match-date">11.11.2025</td>
+            <td>02:15</td>
+            <td>Philadelphia Eagles @ Green Bay Packers</td>
+            <td>- : -</td>
+            <td>
+              <a
+                href="https://www.nfl.com/games/eagles-at-packers-2025-reg-10?tab=overview"
+                target="_blank"
+                >Recap</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </main>
-    <footer>
-        &copy; 2025 GoalNews · Alle Rechte vorbehalten.
-    </footer>
-</body>
-
+    <footer>&copy; 2025 GoalNews · Alle Rechte vorbehalten.</footer>
+  </body>
 </html>
