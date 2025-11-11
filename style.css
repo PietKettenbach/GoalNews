@@ -37,7 +37,7 @@ a:hover {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10000; /* über Navbar */
+  z-index: 10001; /* über alles */
 }
 
 .news-wrapper {
@@ -81,7 +81,7 @@ header,
   top: 40px; /* direkt unter Newsticker */
   left: 0;
   width: 100%;
-  z-index: 9999;
+  z-index: 10000; /* unter Ticker, über Content */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
@@ -104,7 +104,7 @@ header .logo,
   width: 30px;
   height: 20px;
   cursor: pointer;
-  z-index: 10001;
+  z-index: 10002;
   position: relative;
 }
 
@@ -158,14 +158,6 @@ header .logo,
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-#menu-toggle:checked ~ .navbar {
-  position: fixed;
-  top: 40px;
-  left: 0;
-  width: 100%;
-  z-index: 9999;
-}
-
 @keyframes fadeInMenu {
   from {
     opacity: 0;
@@ -186,6 +178,7 @@ header .logo,
   .hamburger-icon {
     display: none;
   }
+
   .nav-menu {
     position: static;
     flex-direction: row;
@@ -197,6 +190,7 @@ header .logo,
     opacity: 1;
     animation: none;
   }
+
   .nav-menu a {
     color: white;
     font-size: 1rem;
@@ -205,18 +199,20 @@ header .logo,
     border-radius: 8px;
     transition: background 0.3s;
   }
+
   .nav-menu a:hover {
     background: rgba(255, 255, 255, 0.1);
   }
+
   .navbar {
     justify-content: space-between;
     padding: 20px 60px;
   }
 }
 
-/* ===== Content unter Navbar & Ticker ===== */
+/* ===== Content unter Navbar + Ticker ===== */
 .content {
-  padding-top: 100px; /* 40px Newsticker + 60px Navbar */
+  padding-top: 100px; /* 40px Ticker + 60px Navbar Höhe */
 }
 
 /* ===== Countdown ===== */
@@ -293,7 +289,6 @@ header .logo,
   color: #1db954;
   margin-bottom: 15px;
 }
-
 .matches h3,
 .matches h4 {
   margin-bottom: 10px;
