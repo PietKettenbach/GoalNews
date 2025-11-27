@@ -29,7 +29,7 @@ a:hover {
 header,
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Alles zentriert */
   align-items: center;
   padding: 15px 40px;
   background: linear-gradient(90deg, #1db954, #14a34a);
@@ -39,8 +39,12 @@ header,
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
+/* Logo immer zentriert */
 header .logo,
 .navbar .logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 2rem;
   font-weight: bold;
   color: white;
@@ -52,7 +56,11 @@ header .logo,
 }
 
 .hamburger-icon {
-  display: flex; /* Immer sichtbar */
+  position: absolute; /* Immer rechts fixiert */
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
@@ -324,6 +332,14 @@ footer {
   .matches {
     grid-template-columns: 1fr;
     padding: 15px;
+  }
+
+  /* Mobile Hamburger fix */
+  .hamburger-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 
