@@ -129,6 +129,36 @@
 
     <!-- Countdown -->
     <div class="countdown-section">
+      <label
+        for="countdownInput"
+        style="color: white; display: block; margin-bottom: 6px"
+        >Zielzeit einstellen:</label
+      >
+      <input
+        id="countdownInput"
+        type="datetime-local"
+        style="
+          padding: 8px;
+          border-radius: 6px;
+          border: none;
+          margin-bottom: 12px;
+        "
+      />
+      <button
+        id="applyCountdown"
+        style="
+          padding: 8px 12px;
+          border: none;
+          border-radius: 6px;
+          background: #1db954;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+          margin-left: 6px;
+        "
+      >
+        Übernehmen
+      </button>
       <h2>⏱️ Bundesliga-Konferenz startet in:</h2>
       <div id="countdown">lade...</div>
     </div>
@@ -141,7 +171,7 @@
       </h3>
       <div style="color: #eee">
         <h4 style="color: #1db954">Freitag:</h4>
-        <p>M'gladbach 20:30 RB Leipzig</p>
+        <p>M'gladbach 0:0 RB Leipzig</p>
         <h4 style="color: #1db954">Samstag:</h4>
         <p>
           Bayern München 15:30 FC St. Pauli<br />
@@ -193,7 +223,16 @@
     </footer>
     <script>
       const countdownEl = document.getElementById("countdown");
-      const targetDate = new Date("2025-11-30T15:30:00+01:00");
+      let targetDate = new Date("2025-11-30T15:30:00");
+
+      const inputEl = document.getElementById("countdownInput");
+      const applyBtn = document.getElementById("applyCountdown");
+
+      applyBtn.addEventListener("click", () => {
+        const val = inputEl.value;
+        if (!val) return;
+        targetDate = new Date(val);
+      });
 
       function updateCountdown() {
         const now = new Date();
