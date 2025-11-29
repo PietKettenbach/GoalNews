@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GoalNewsDE – 1. Bundesliga Tabelle</title>
+    <title>GoalNews – 1. Bundesliga Tabelle</title>
+
     <style>
       body {
         font-family: "Poppins", sans-serif;
@@ -12,9 +13,10 @@
         color: #e0e0e0;
         text-align: center;
       }
+
       a {
         text-decoration: none;
-        color: #ffd700; /* goldener Link */
+        color: #ffd700;
         font-weight: bold;
       }
       a:hover {
@@ -33,11 +35,9 @@
 
       .hero-container {
         display: flex;
-        align-items: center;
         justify-content: center;
         margin: 20px auto;
         max-width: 900px;
-        position: relative;
         flex-wrap: wrap;
       }
 
@@ -53,17 +53,21 @@
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
       }
 
-      /* Tabelle */
+      /* Tabelle fix komplett */
+      .table-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 40px 0;
+      }
+
       .bundesliga-table {
         width: 100%;
-        max-width: 1200px;
-        margin: 20px auto 40px auto;
+        max-width: 1000px;
         border-collapse: collapse;
         background: #1e1e1e;
         border-radius: 10px;
         overflow: hidden;
-        display: block;
-        overflow-x: auto;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
       }
 
@@ -71,17 +75,13 @@
       .bundesliga-table td {
         padding: 12px;
         text-align: center;
-        min-width: 50px;
         border-bottom: 1px solid #333;
-        transition: background 0.4s ease, transform 0.3s ease;
+        transition: background 0.3s ease;
       }
 
       .bundesliga-table th {
         background: #1db954;
         color: #fff;
-        position: sticky;
-        top: 0;
-        z-index: 1;
         font-weight: bold;
       }
 
@@ -91,14 +91,13 @@
 
       .bundesliga-table tbody tr:hover {
         background: #3a3a3a;
-        transform: scale(1.02);
       }
 
-      .bundesliga-table tbody tr.top {
+      .top {
         border-left: 4px solid gold;
       }
 
-      .bundesliga-table tbody tr.relegation {
+      .relegation {
         border-left: 4px solid #ff4d4d;
       }
 
@@ -110,29 +109,13 @@
         color: #ffd700;
         text-decoration: none;
         border-bottom: 2px solid #ffd700;
-        transition: all 0.3s;
+        transition: 0.3s;
       }
 
       .lamine-link:hover {
         color: #fff176;
         border-bottom-color: #fff176;
-        text-shadow: 0 0 8px #ffd700, 0 0 15px #fff176;
-      }
-
-      @media (max-width: 768px) {
-        th,
-        td {
-          font-size: 0.85rem;
-          padding: 8px 6px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        th,
-        td {
-          font-size: 0.75rem;
-          padding: 6px 4px;
-        }
+        text-shadow: 0 0 8px #ffd700;
       }
     </style>
   </head>
@@ -143,17 +126,14 @@
     </header>
 
     <div class="hero-container">
-      <div class="hero">1. Bundesliga Tabelle – 25/26</div>
+      <div class="hero">1. Bundesliga Tabelle – 2025/2026</div>
     </div>
 
-    <a href="lamineyamal.html" class="lamine-link"
-      >💎 Wertvollster Spieler: Lamine Yamal</a
-    >
+    <a href="lamineyamal.html" class="lamine-link">
+      💎 Wertvollster Spieler: Lamine Yamal
+    </a>
 
-    <div
-      class="matches"
-      style="margin: 40px auto; max-width: 1200px; overflow-x: auto"
-    >
+    <div class="table-wrapper">
       <table class="bundesliga-table">
         <thead>
           <tr>
@@ -169,221 +149,222 @@
             <th>Punkte</th>
           </tr>
         </thead>
+
         <tbody>
           <tr class="top">
             <td>1</td>
-            <td>Bayern</td>
-            <td>9</td>
-            <td>9</td>
+            <td>Bayern München (M)</td>
+            <td>11</td>
+            <td>10</td>
+            <td>1</td>
             <td>0</td>
-            <td>0</td>
+            <td>41</td>
+            <td>8</td>
             <td>33</td>
-            <td>4</td>
-            <td>29</td>
-            <td>27</td>
+            <td>31</td>
           </tr>
           <tr class="top">
             <td>2</td>
             <td>RB Leipzig</td>
-            <td>9</td>
-            <td>7</td>
-            <td>1</td>
-            <td>1</td>
-            <td>19</td>
-            <td>10</td>
-            <td>9</td>
+            <td>12</td>
+            <td>8</td>
+            <td>2</td>
+            <td>2</td>
             <td>22</td>
+            <td>13</td>
+            <td>9</td>
+            <td>26</td>
           </tr>
           <tr class="top">
             <td>3</td>
-            <td>Dortmund</td>
+            <td>Bayer 04 Leverkusen</td>
+            <td>11</td>
+            <td>7</td>
+            <td>2</td>
+            <td>2</td>
+            <td>27</td>
+            <td>15</td>
+            <td>12</td>
+            <td>23</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Borussia Dortmund</td>
+            <td>11</td>
+            <td>6</td>
+            <td>4</td>
+            <td>1</td>
+            <td>19</td>
+            <td>10</td>
             <td>9</td>
+            <td>22</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>VfB Stuttgart (P)</td>
+            <td>11</td>
+            <td>7</td>
+            <td>1</td>
+            <td>3</td>
+            <td>20</td>
+            <td>15</td>
+            <td>5</td>
+            <td>22</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Eintracht Frankfurt</td>
+            <td>11</td>
             <td>6</td>
             <td>2</td>
-            <td>1</td>
-            <td>15</td>
-            <td>6</td>
-            <td>9</td>
+            <td>3</td>
+            <td>27</td>
+            <td>22</td>
+            <td>5</td>
             <td>20</td>
           </tr>
           <tr>
-            <td>4</td>
-            <td>Stuttgart</td>
-            <td>9</td>
-            <td>6</td>
-            <td>0</td>
-            <td>3</td>
-            <td>14</td>
-            <td>10</td>
-            <td>4</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Leverkusen</td>
-            <td>9</td>
-            <td>5</td>
-            <td>2</td>
-            <td>2</td>
-            <td>18</td>
-            <td>14</td>
-            <td>4</td>
-            <td>17</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>TSG Hoffenheim</td>
-            <td>9</td>
-            <td>5</td>
-            <td>1</td>
-            <td>3</td>
-            <td>18</td>
-            <td>15</td>
-            <td>3</td>
-            <td>16</td>
-          </tr>
-          <tr>
             <td>7</td>
-            <td>1. FC Köln</td>
-            <td>9</td>
-            <td>4</td>
-            <td>2</td>
-            <td>3</td>
-            <td>16</td>
-            <td>12</td>
-            <td>4</td>
-            <td>14</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>Eintracht Frankfurt</td>
-            <td>9</td>
-            <td>4</td>
+            <td>TSG Hoffenheim</td>
+            <td>11</td>
+            <td>6</td>
             <td>2</td>
             <td>3</td>
             <td>22</td>
-            <td>19</td>
+            <td>17</td>
+            <td>5</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>1. FC Union Berlin</td>
+            <td>11</td>
+            <td>4</td>
             <td>3</td>
+            <td>4</td>
             <td>14</td>
+            <td>17</td>
+            <td>-3</td>
+            <td>15</td>
           </tr>
           <tr>
             <td>9</td>
             <td>Werder Bremen</td>
-            <td>9</td>
-            <td>3</td>
-            <td>3</td>
-            <td>3</td>
-            <td>17</td>
-            <td>17</td>
-            <td>-4</td>
-            <td>12</td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td>Union Berlin</td>
-            <td>9</td>
-            <td>3</td>
-            <td>2</td>
-            <td>4</td>
-            <td>15</td>
-            <td>15</td>
-            <td>-4</td>
             <td>11</td>
-          </tr>
-          <tr>
-            <td>11</td>
-            <td>SC Freiburg</td>
-            <td>9</td>
-            <td>2</td>
             <td>4</td>
             <td>3</td>
-            <td>13</td>
-            <td>13</td>
-            <td>-2</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <td>12</td>
-            <td>VfL Wolfsburg</td>
-            <td>9</td>
-            <td>2</td>
-            <td>2</td>
-            <td>5</td>
-            <td>16</td>
-            <td>16</td>
+            <td>4</td>
+            <td>15</td>
+            <td>20</td>
             <td>-5</td>
-            <td>8</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>1. FC Köln (N)</td>
+            <td>11</td>
+            <td>4</td>
+            <td>2</td>
+            <td>5</td>
+            <td>20</td>
+            <td>19</td>
+            <td>1</td>
+            <td>14</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>Bor. Mönchengladbach</td>
+            <td>12</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>16</td>
+            <td>19</td>
+            <td>-3</td>
+            <td>13</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>SC Freiburg</td>
+            <td>11</td>
+            <td>3</td>
+            <td>4</td>
+            <td>4</td>
+            <td>15</td>
+            <td>20</td>
+            <td>-5</td>
+            <td>13</td>
           </tr>
           <tr>
             <td>13</td>
-            <td>Hamburger SV</td>
-            <td>9</td>
-            <td>2</td>
-            <td>2</td>
-            <td>5</td>
+            <td>FC Augsburg</td>
+            <td>11</td>
+            <td>3</td>
+            <td>1</td>
+            <td>7</td>
             <td>15</td>
-            <td>15</td>
-            <td>-7</td>
-            <td>8</td>
+            <td>24</td>
+            <td>-9</td>
+            <td>10</td>
           </tr>
           <tr>
             <td>14</td>
-            <td>FC Augsburg</td>
-            <td>9</td>
+            <td>Hamburger SV (N)</td>
+            <td>11</td>
             <td>2</td>
-            <td>1</td>
+            <td>3</td>
             <td>6</td>
-            <td>21</td>
-            <td>21</td>
-            <td>-9</td>
-            <td>7</td>
+            <td>9</td>
+            <td>17</td>
+            <td>-8</td>
+            <td>9</td>
           </tr>
-          <tr class="relegation">
+          <tr>
             <td>15</td>
-            <td>St. Pauli</td>
-            <td>9</td>
+            <td>VfL Wolfsburg</td>
+            <td>11</td>
             <td>2</td>
-            <td>1</td>
-            <td>6</td>
-            <td>18</td>
-            <td>18</td>
-            <td>-10</td>
+            <td>2</td>
             <td>7</td>
+            <td>13</td>
+            <td>21</td>
+            <td>-8</td>
+            <td>8</td>
           </tr>
           <tr class="relegation">
             <td>16</td>
-            <td>Gladbach</td>
+            <td>FC St. Pauli</td>
+            <td>11</td>
+            <td>2</td>
+            <td>1</td>
+            <td>8</td>
             <td>9</td>
+            <td>21</td>
+            <td>-12</td>
+            <td>7</td>
+          </tr>
+          <tr class="relegation">
+            <td>17</td>
+            <td>1. FSV Mainz 05</td>
+            <td>11</td>
             <td>1</td>
             <td>3</td>
-            <td>5</td>
-            <td>18</td>
-            <td>18</td>
+            <td>7</td>
+            <td>11</td>
+            <td>19</td>
             <td>-8</td>
             <td>6</td>
           </tr>
           <tr class="relegation">
-            <td>17</td>
-            <td>Mainz 05</td>
-            <td>9</td>
-            <td>1</td>
-            <td>2</td>
-            <td>6</td>
-            <td>17</td>
-            <td>17</td>
-            <td>-7</td>
-            <td>5</td>
-          </tr>
-          <tr class="relegation">
             <td>18</td>
-            <td>Heidenheim</td>
-            <td>9</td>
+            <td>1. FC Heidenheim</td>
+            <td>11</td>
             <td>1</td>
             <td>2</td>
-            <td>6</td>
-            <td>17</td>
-            <td>17</td>
-            <td>-9</td>
+            <td>8</td>
+            <td>8</td>
+            <td>26</td>
+            <td>-18</td>
             <td>5</td>
           </tr>
         </tbody>
