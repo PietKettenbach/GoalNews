@@ -39,12 +39,18 @@
         margin-bottom: 20px;
       }
 
-      input {
+      input[type="email"],
+      input[type="password"],
+      input[type="text"] {
         width: 100%;
         padding: 12px;
         margin: 8px 0;
         border: none;
         border-radius: 6px;
+      }
+
+      .input-wrapper {
+        position: relative;
       }
 
       .togglePwd {
@@ -53,10 +59,21 @@
         right: 15px;
         top: 50%;
         transform: translateY(-50%);
+        font-size: 18px;
+        color: #1db954;
+        transition: transform 0.2s;
       }
 
-      .input-wrapper {
-        position: relative;
+      .togglePwd:hover {
+        transform: translateY(-50%) scale(1.2);
+      }
+
+      .notifications {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
       }
 
       button {
@@ -81,15 +98,6 @@
         margin-top: 15px;
         text-decoration: none;
       }
-
-      .email-optin {
-        text-align: left;
-        margin: 10px 0;
-      }
-
-      .email-optin label {
-        margin-left: 5px;
-      }
     </style>
   </head>
   <body>
@@ -99,13 +107,13 @@
       <input id="email" type="email" placeholder="E-Mail" />
       <div class="input-wrapper">
         <input id="password" type="password" placeholder="Passwort" />
-        <span class="togglePwd" id="togglePwd">👁️</span>
+        <span class="togglePwd" id="togglePwd">👁️‍🗨️</span>
       </div>
       <input id="username" type="text" placeholder="Username" />
 
-      <div class="email-optin">
-        <input type="checkbox" id="allowEmails" />
-        <label for="allowEmails">Ich möchte E-Mail-Benachrichtigungen erhalten</label>
+      <div class="notifications">
+        <input type="checkbox" id="notify" />
+        <label for="notify">Ich möchte Benachrichtigungen erhalten</label>
       </div>
 
       <button id="registerBtn">Registrieren</button>
@@ -144,22 +152,26 @@
 
       toggle.onclick = () => {
         pwd.type = pwd.type === "password" ? "text" : "password";
-        toggle.textContent = pwd.type === "password" ? "👁️" : "🙈";
+        toggle.textContent = pwd.type === "password" ? "👁️‍🗨️" : "🔒";
       };
 
       document.getElementById("registerBtn").onclick = async () => {
         const email = document.getElementById("email").value;
         const password = pwd.value;
         const username = document.getElementById("username").value.trim();
-        const allowEmails = document.getElementById("allowEmails").checked;
+        const notify = document.getElementById("notify").checked;
 
         if (!email || !password || !username) {
-          alert("Bitte fülle alles aus!");
+          alert("Fülle alles aus!");
+          return;
+        }
+
+        if (!notify) {
+          alert("Du musst die Benachrichtigungen akzeptieren.");
           return;
         }
 
         try {
-          // Nutzer erstellen
           const userCred = await createUserWithEmailAndPassword(
             auth,
             email,
@@ -167,30 +179,21 @@
           );
           const user = userCred.user;
 
-          // User-Daten in Firestore speichern
           await setDoc(doc(db, "users", user.uid), {
             username: username,
             email: email,
+            notifications: notify,
             createdAt: new Date().toISOString(),
-            emailVerified: false,
-            allowEmails: allowEmails
           });
 
-          
           await sendEmailVerification(user);
-          
 
           alert(
-            "Registrierung erfolgreich!\n" +
-            ("Wir haben dir eine Bestätigungs-E-Mail gesendet!") +
-            "\nBitte bestätige deine E-Mail, bevor du dich einloggst. Schauhe auch im SPAM nach."
+            "Check deine E-Mail (Auch den Spam) und bestätige deinen Account!"
           );
-
           window.location.href = "login.html";
-
         } catch (err) {
-          alert("Fehler: " + err.message);
-          console.error(err);
+          alert(err.message);
         }
       };
     </script>
